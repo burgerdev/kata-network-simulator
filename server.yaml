@@ -29,9 +29,10 @@ spec:
             - name: script-vol
               mountPath: /data
           securityContext:
-            privileged: true
-            # capabilities:
-            #   add: ["SYS_ADMIN", "NET_ADMIN"]
+            capabilities:
+              add:
+                - NET_ADMIN
+                - SYS_ADMIN
           readinessProbe:
             exec:
               command: ["test", "-f", "/tmp/ready"]
