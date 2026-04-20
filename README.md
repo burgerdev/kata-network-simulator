@@ -29,6 +29,15 @@ The provided `setup.sh` script creates a new network namespace to simulate the K
 The configuration of the pod's `eth0` interface is moved to the VM's `eth0`.
 A pair of `tc(8)` rules is set up to forward traffic from the pod to the VM, and vice versa.
 
+## Installation
+
+This demo is installed as a kustomization:
+
+```sh
+kubectl create ns netns-challenge
+kubectl apply -k .
+```
+
 ## Challenge
 
 See https://github.com/kata-containers/kata-containers/issues/1693.
