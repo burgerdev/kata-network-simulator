@@ -39,7 +39,6 @@ nsenter -t "$vm_pid" -n ip addr add ::1/128 dev lo
 # Copy IP addresses from host eth0 to namespace eth0.
 for addr in $(ip -j addr show eth0 | jq -r '.[] | .addr_info[] | "\(.local)/\(.prefixlen)"'); do
   nsenter -t "$vm_pid" -n ip addr add dev eth0 "$addr"
-  ip addr del dev eth0 "$addr"
 done
 
 # Copy MAC address.
